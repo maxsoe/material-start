@@ -1,25 +1,39 @@
+/* Buttons */
+
 .buttondemo section {
-   background: #f7f7f7;
-   border-radius: 3px;
-   text-align: center;
-   margin: 1em;
-   position: relative !important;
-   padding-bottom: 10px;
+  background: #f7f7f7;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px;
 }
 
 .buttondemo md-content {
-   margin-right: 7px;
+  margin-right: 7px;
 }
 
 .buttondemo section .md-button {
-   margin-top: 16px;
-   margin-bottom: 16px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .buttondemo .label {
-   position: absolute;
-   bottom: 5px;
-   left: 7px;
-   font-size: 14px;
-   opacity: 0.54;
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54;
+}
+
+/* Date picker */
+
+.datepickerdemo md-content {
+  padding-bottom: 200px;
+}
+
+.datepickerdemo .validation-messages {
+  font-size: 11px;
+  color: darkred;
+  margin: 10px 0 0 25px;
 }
