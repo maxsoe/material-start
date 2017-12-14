@@ -7,12 +7,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+  <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <script type="text/javascript">
     angular
       .module('firstApplication', ['ngMaterial'])
       .controller('bottomSheetController', bottomSheetController)
+      .controller('cardController', cardController)
       .controller('autoCompleteController', autoCompleteController);
+
+    function cardController($scope) {}
 
     function bottomSheetController($scope, $mdBottomSheet) {
       $scope.openBottomSheet = function() {
@@ -136,6 +140,45 @@
 
     <p>The new standard incorporates features like video playback and drag-and-drop that have been previously dependent on third-party browser plug-ins such as Adobe Flash, Microsoft Silverlight, and Google Gears.</p>
   </md-content>
+
+  <md-card>
+    <img ng-src="http://icons.iconarchive.com/icons/igh0zt/ios7-style-metro-ui/256/MetroUI-Apps-HTML-5-icon.png" width="42px" class="md-card-image" alt="Learn HTML5">
+    <md-card-header>
+      <md-card-avatar>
+        <img class="md-user-avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/adellecharles/128.jpg" width="48px">
+      </md-card-avatar>
+
+      <md-card-header-text>
+        <span class="md-title">HTML5</span>
+        <span class="md-subhead">Learn HTML5 @TutorialsPoint.com</span>
+      </md-card-header-text>
+    </md-card-header>
+
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline">HTML5</span>
+      </md-card-title-text>
+    </md-card-title>
+
+    <md-card-actions layout="row" layout-align="start center">
+      <md-button>Download</md-button>
+      <md-button>Start</md-button>
+      <md-card-icon-actions>
+        <md-button class="md-icon-button" aria-label="icon">
+          <md-icon class="material-icons">add</md-icon>
+        </md-button>
+      </md-card-icon-actions>
+    </md-card-actions>
+
+    <md-card-content>
+      <p>HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for structuring and presenting content on the World Wide Web.</p>
+
+      <p>HTML5 is a cooperation between the World Wide Web Consortium (W3C) and the Web Hypertext Application Technology Working Group (WHATWG).</p>
+
+      </p>The new standard incorporates features like video playback and drag-and-drop that have been previously dependent on third-party browser plug-ins such as Adobe Flash, Microsoft Silverlight, and Google Gears.</p>
+    </md-card-content>
+  </md-card>
+
   <div ng-controller="bottomSheetController as ctrl" layout="column">
     <md-content class="md-padding">
       <form ng-submit="$event.preventDefault()">
