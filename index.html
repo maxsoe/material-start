@@ -133,6 +133,16 @@
     </md-content>
   </div>
 
+  <div ng-controller="bottomSheetController as ctrl" layout="column">
+    <md-content class="md-padding">
+      <form ng-submit="$event.preventDefault()">
+        <md-button class="md-raised md-primary" ng-click="openBottomSheet()">
+          Open Bottom Sheet!
+        </md-button>
+      </form>
+    </md-content>
+  </div>
+
   <md-content flex layout-padding>
     <p>HTML5 is the next major revision of the HTML standard superseding HTML 4.01, XHTML 1.0, and XHTML 1.1. HTML5 is a standard for structuring and presenting content on the World Wide Web.</p>
 
@@ -179,15 +189,7 @@
     </md-card-content>
   </md-card>
 
-  <div ng-controller="bottomSheetController as ctrl" layout="column">
-    <md-content class="md-padding">
-      <form ng-submit="$event.preventDefault()">
-        <md-button class="md-raised md-primary" ng-click="openBottomSheet()">
-          Open Bottom Sheet!
-        </md-button>
-      </form>
-    </md-content>
-  </div>
+
 </body>
 
 </html>
