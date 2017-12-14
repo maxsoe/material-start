@@ -11,7 +11,16 @@
   <script type="text/javascript">
     angular
       .module('firstApplication', ['ngMaterial'])
+      .controller('bottomSheetController', bottomSheetController)
       .controller('autoCompleteController', autoCompleteController);
+
+    function bottomSheetController($scope, $mdBottomSheet) {
+      $scope.openBottomSheet = function() {
+        $mdBottomSheet.show({
+          template: '<md-bottom-sheet>Learn <b>Angular Material</b> @ TutorialsPoint.com!</md-bottom-sheet>'
+        });
+      };
+    }
 
     function autoCompleteController($timeout, $q, $log) {
       var self = this;
@@ -127,6 +136,15 @@
 
     <p>The new standard incorporates features like video playback and drag-and-drop that have been previously dependent on third-party browser plug-ins such as Adobe Flash, Microsoft Silverlight, and Google Gears.</p>
   </md-content>
+  <div ng-controller="bottomSheetController as ctrl" layout="column">
+    <md-content class="md-padding">
+      <form ng-submit="$event.preventDefault()">
+        <md-button class="md-raised md-primary" ng-click="openBottomSheet()">
+          Open Bottom Sheet!
+        </md-button>
+      </form>
+    </md-content>
+  </div>
 </body>
 
 </html>
