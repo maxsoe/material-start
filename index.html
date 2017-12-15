@@ -24,7 +24,30 @@
       .controller('dividerController', dividerController)
       .controller('menuController', menuController)
       .controller('menubarController', menubarController)
-      .controller('progressbarsController', progressbarsController);
+      .controller('progressbarsController', progressbarsController)
+      .controller('radioButtonsController', radioButtonsController);
+
+    function radioButtonsController($scope) {
+      $scope.radioData = [{
+          label: 'Apple',
+          value: 'Apple'
+        },
+        {
+          label: 'Banana',
+          value: 'Banana'
+        },
+        {
+          label: 'Mango',
+          value: 'Mango',
+          isDisabled: true
+        },
+        {
+          label: 'Orange',
+          value: 'Orange'
+        }
+      ];
+      $scope.group = 'Banana';
+    }
 
     function progressbarsController($scope, $interval) {
       var self = this,
@@ -704,6 +727,18 @@
         <h5>On</h5>
       </md-switch>
     </div>
+
+  </div>
+
+  <h1>Radio buttons</h1>
+  <div id="radioButtonsContainer" ng-controller="radioButtonsController as ctrl" layout="column" ng-cloak>
+    <p>Selected Value: <span>{{ group }}</span> </p>
+
+    <md-radio-group ng-model="group" class="md-primary">
+      <md-radio-button ng-repeat="d in radioData" ng-value="d.value" ng-disabled=" d.isDisabled " ng-class="{'md-align-top-left': $index==1}">
+        {{ d.label }}<br/>
+      </md-radio-button>
+    </md-radio-group>
 
   </div>
 
