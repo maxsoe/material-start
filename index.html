@@ -25,7 +25,62 @@
       .controller('menuController', menuController)
       .controller('menubarController', menubarController)
       .controller('progressbarsController', progressbarsController)
-      .controller('radioButtonsController', radioButtonsController);
+      .controller('radioButtonsController', radioButtonsController)
+      .controller('selectController', selectController);
+
+    function selectController($scope) {
+      $scope.users = [{
+          id: 1,
+          name: 'Mahesh'
+        },
+        {
+          id: 2,
+          name: 'Ramesh'
+        },
+        {
+          id: 3,
+          name: 'Sohan'
+        }
+      ];
+
+      $scope.selectedUser = {
+        id: 2,
+        name: 'Ramesh'
+      };
+      $scope.drinks = [{
+          category: 'hard',
+          name: 'Beer'
+        },
+        {
+          category: 'hard',
+          name: 'Rum'
+        },
+        {
+          category: 'hard',
+          name: 'Vodka'
+        },
+        {
+          category: 'hard',
+          name: 'Whiski'
+        },
+        {
+          category: 'soft',
+          name: 'Coke'
+        },
+        {
+          category: 'soft',
+          name: 'Pepsi'
+        },
+        {
+          category: 'soft',
+          name: 'Pulp Maid'
+        },
+        {
+          category: 'soft',
+          name: 'Real Juice'
+        }
+      ];
+    }
 
     function radioButtonsController($scope) {
       $scope.radioData = [{
@@ -739,6 +794,32 @@
         {{ d.label }}<br/>
       </md-radio-button>
     </md-radio-group>
+
+  </div>
+
+  <h1>Selects</h1>
+  <div id="selectContainer" ng-controller="selectController as ctrl" layout="row" ng-cloak>
+    <md-input-container>
+      <label>User</label>
+      <md-select ng-model="selectedUser">
+        <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Drinks</label>
+      <md-select ng-model="drink">
+        <md-optgroup label="Hard Drinks">
+          <md-option ng-value="drink.name" ng-repeat="drink in drinks | filter: {category: 'hard' }">
+            {{drink.name}}</md-option>
+        </md-optgroup>
+
+        <md-optgroup label="Soft Drinks">
+          <md-option ng-value="drink.name" ng-repeat="drink in drinks | filter: {category: 'soft' }">
+            {{drink.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
 
   </div>
 
