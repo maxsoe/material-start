@@ -23,7 +23,35 @@
       .controller('dialogController', dialogController)
       .controller('dividerController', dividerController)
       .controller('menuController', menuController)
-      .controller('menubarController', menubarController);
+      .controller('menubarController', menubarController)
+      .controller('progressbarsController', progressbarsController);
+
+    function progressbarsController($scope, $interval) {
+      var self = this,
+        j = 0,
+        counter = 0;
+      self.modes = [];
+      self.activated = true;
+      self.determinateValue = 30;
+
+      self.toggleActivation = function() {
+        if (!self.activated) self.modes = [];
+        if (self.activated) j = counter = 0;
+      };
+
+      $interval(function() {
+        self.determinateValue += 1;
+
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
+        }
+
+        if ((j < 5) && !self.modes[j] && self.activated) {
+          self.modes[j] = 'indeterminate';
+        }
+        if (counter++ % 4 == 0) j++;
+      }, 100, 0, true);
+    }
 
     function menubarController($scope, $mdDialog) {
       this.sampleAction = function(name, ev) {
@@ -258,68 +286,61 @@
   </md-content>
 
   <h1>Menu bar</h1>
-  <div id = "menubarContainer" ng-controller = "menubarController as ctrl"
-           layout = "row" ng-cloak>
-           <md-toolbar class = "md-menu-toolbar">
-              <div layout = "row">
-                 <div>
-                    <h2 class = "md-toolbar-tools">Learn @TutorialsPoint</h2>
-                    <md-menu-bar>
-                       <md-menu>
-                          <button ng-click = "$mdOpenMenu()">Tutorials</button>
-                          <md-menu-content>
+  <div id="menubarContainer" ng-controller="menubarController as ctrl" layout="row" ng-cloak>
+    <md-toolbar class="md-menu-toolbar">
+      <div layout="row">
+        <div>
+          <h2 class="md-toolbar-tools">Learn @TutorialsPoint</h2>
+          <md-menu-bar>
+            <md-menu>
+              <button ng-click="$mdOpenMenu()">Tutorials</button>
+              <md-menu-content>
 
-                             <md-menu-item>
-                                <md-button ng-click = "ctrl.sampleAction('share', $event)">Share...</md-button>
-                             </md-menu-item>
+                <md-menu-item>
+                  <md-button ng-click="ctrl.sampleAction('share', $event)">Share...</md-button>
+                </md-menu-item>
 
-                             <md-menu-divider></md-menu-divider>
-                             <md-menu-item>
-                                <md-menu>
-                                   <md-button
-                                      ng-click = "$mdOpenMenu()">Learn</md-button>
-                                   <md-menu-content>
-                                      <md-menu-item>
-                                         <md-button
-                                         ng-click = "ctrl.sampleAction('HTML5', $event)">
-                                         HTML5</md-button>
-                                      </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                  <md-menu>
+                    <md-button ng-click="$mdOpenMenu()">Learn</md-button>
+                    <md-menu-content>
+                      <md-menu-item>
+                        <md-button ng-click="ctrl.sampleAction('HTML5', $event)">
+                          HTML5</md-button>
+                      </md-menu-item>
 
-                                      <md-menu-item>
-                                         <md-button
-                                            ng-click = "ctrl.sampleAction('jQuery', $event)">
-                                            jQuery</md-button>
-                                      </md-menu-item>
+                      <md-menu-item>
+                        <md-button ng-click="ctrl.sampleAction('jQuery', $event)">
+                          jQuery</md-button>
+                      </md-menu-item>
 
-                                      <md-menu-item>
-                                         <md-button
-                                            ng-click = "ctrl.sampleAction('AngularJS', $event)">
-                                            AngularJS</md-button>
-                                      </md-menu-item>
+                      <md-menu-item>
+                        <md-button ng-click="ctrl.sampleAction('AngularJS', $event)">
+                          AngularJS</md-button>
+                      </md-menu-item>
 
-                                      <md-menu-item>
-                                         <md-button disabled = "disabled"
-                                            ng-click = "ctrl.sampleAction('AngularJS 2.0', $event)">
-                                            AngularJS 2.0</md-button>
-                                      </md-menu-item>
+                      <md-menu-item>
+                        <md-button disabled="disabled" ng-click="ctrl.sampleAction('AngularJS 2.0', $event)">
+                          AngularJS 2.0</md-button>
+                      </md-menu-item>
 
-                                      <md-menu-divider></md-menu-divider>
-                                      <md-menu-item>
-                                         <md-button
-                                            ng-click = "ctrl.sampleAction('CSS', $event)">
-                                            CSS</md-button>
-                                      </md-menu-item>
-                                   </md-menu-content>
-                                </md-menu>
-                             </md-menu-item>
+                      <md-menu-divider></md-menu-divider>
+                      <md-menu-item>
+                        <md-button ng-click="ctrl.sampleAction('CSS', $event)">
+                          CSS</md-button>
+                      </md-menu-item>
+                    </md-menu-content>
+                  </md-menu>
+                </md-menu-item>
 
-                          </md-menu-content>
-                       </md-menu>
-                    </md-menu-bar>
-                 </div>
-              </div>
-           </md-toolbar>
+              </md-menu-content>
+            </md-menu>
+          </md-menu-bar>
         </div>
+      </div>
+    </md-toolbar>
+  </div>
 
   <div ng-controller="autoCompleteController as ctrl" layout="column">
     <h1>Autocomplete</h1>
@@ -603,7 +624,7 @@
     </md-content>
   </div>
 
-  <h1>Menu</h1>
+  <h1>Menu/MenuBar</h1>
   <div id="menuContainer" ng-controller="menuController as ctrl" layout="row">
     <div layout="column" flex="33" flex-sm="100" layout-align="center center">
       <p>Default Menu</p>
@@ -652,6 +673,36 @@
           </md-menu-item>
         </md-menu-content>
       </md-menu>
+    </div>
+
+  </div>
+
+  <h1>Progress bars</h1>
+  <div id="progressbarsContainer" ng-controller="progressbarsController as ctrl" layout="column" ng-cloak>
+
+    <h4 style="margin-top:10px">Determinate </h4>
+    <p></p>
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-linear md-mode="determinate" value="{{ctrl.determinateValue}}"></md-progress-circular>
+    </div>
+
+    <h4 style="margin-top:10px">Indeterminate </h4>
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-linear md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <h4 style="margin-top:10px">Buffer</h4>
+    <div layout="row" layout-sm="column" layout-align="space-around">
+      <md-progress-linear class="md-warn" md-mode="{{ctrl.modes[0]}}" value="{{ctrl.determinateValue}}" md-buffer-value="{{ctrl.determinateValue2}}"></md-progress-linear>
+    </div>
+
+    <hr ng-class="{'visible' : ctrl.activated}">
+    <div id="loaders" layout="row" layout-align="start center">
+      <p>Progress Buffer Indicators: </p>
+      <h5>Off</h5>
+      <md-switch ng-model="ctrl.activated" ng-change="ctrl.toggleActivation()" aria-label="Toggle Buffer Progress Indicators">
+        <h5>On</h5>
+      </md-switch>
     </div>
 
   </div>
