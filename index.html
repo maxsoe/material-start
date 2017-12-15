@@ -29,7 +29,7 @@
       .controller('selectController', selectController)
       .controller('toolbarController', toolbarController)
       .controller('sliderController', sliderController)
-      .controller('tabController', tabController);
+      .controller('tabController', tabController)
 
     function tabController($scope) {
       $scope.data = {
@@ -707,6 +707,22 @@
   <div id="dividerContainer" ng-controller="dividerController as ctrl" layout="column">
     <h1>Dividers and List Container</h1>
     <md-content>
+      <md-toolbar md-scroll-shrink>
+               <div class = "md-toolbar-tools">
+                  <md-button class = "md-icon-button" aria-label = "Settings">
+                     <md-icon class = "material-icons">menu</md-icon>
+                  </md-button>
+
+                  <h2>
+                     <span>Contacts</span>
+                  </h2>
+
+                  <span flex></span>
+                  <md-button class = "md-icon-button" aria-label = "More">
+                     <md-icon class = "material-icons">more_vert</md-icon>
+                  </md-button>
+               </div>
+            </md-toolbar>
       <md-list>
         <md-subheader class="md-no-sticky">Contacts</md-subheader>
         <md-list-item class="md-2-line contact-item" ng-repeat="(index, contact) in ctrl.allContacts" ng-if="ctrl.contacts.indexOf(contact) < 0">
