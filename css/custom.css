@@ -28,10 +28,6 @@
 
 /* Date picker */
 
-.datepickerdemo md-content {
-  padding-bottom: 200px;
-}
-
 .datepickerdemo .validation-messages {
   font-size: 11px;
   color: darkred;

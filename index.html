@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="/css/custom.css">
 
-
   <script type="text/javascript">
     angular
       .module('firstApplication', ['ngMaterial'])
@@ -20,7 +19,8 @@
       .controller('autoCompleteController', autoCompleteController)
       .controller('buttonController', buttonController)
       .controller('checkBoxController', checkBoxController)
-      .controller('dateController', dateController);
+      .controller('dateController', dateController)
+      .controller('dialogController', dialogController);
 
     function checkBoxController($scope) {}
 
@@ -128,6 +128,56 @@
         };
       }
     }
+
+    function dialogController($scope, $mdDialog) {
+      $scope.status = '';
+      $scope.items = [1, 2, 3, 4, 5];
+      $scope.showAlert = function(ev) {
+        $mdDialog.show(
+          $mdDialog.alert()
+          .parent(angular.element(document.querySelector('#dialogContainer')))
+          .clickOutsideToClose(true)
+          .title('TutorialsPoint.com')
+          .textContent('Welcome to TutorialsPoint.com')
+          .ariaLabel('Welcome to TutorialsPoint.com')
+          .ok('Ok!')
+          .targetEvent(ev)
+        );
+      };
+
+      $scope.showConfirm = function(event) {
+        var confirm = $mdDialog.confirm()
+          .title('Are you sure to delete the record?')
+          .textContent('Record will be deleted permanently.')
+          .ariaLabel('TutorialsPoint.com')
+          .targetEvent(event)
+          .ok('Yes')
+          .cancel('No');
+        $mdDialog.show(confirm).then(function() {
+          $scope.status = 'Record deleted successfully!';
+        }, function() {
+          $scope.status = 'You decided to keep your record.';
+        });
+      };
+
+      $scope.showCustom = function(event) {
+        $mdDialog.show({
+          clickOutsideToClose: true,
+          scope: $scope,
+          preserveScope: true,
+          template: '<md-dialog>' +
+            '  <md-dialog-content>' +
+            '     Welcome to TutorialsPoint.com' +
+            '  </md-dialog-content>' +
+            '</md-dialog>',
+          controller: function DialogController($scope, $mdDialog) {
+            $scope.closeDialog = function() {
+              $mdDialog.hide();
+            }
+          }
+        });
+      };
+    }
   </script>
 </head>
 
@@ -185,8 +235,6 @@
       </form>
     </md-content>
   </div>
-
-
 
   <div ng-controller="cardController as ctrl" layout="column">
     <h1>Card</h1>
@@ -332,7 +380,7 @@
     </md-checkbox>
   </div>
 
-  <div class="datepickerdemo" ng-controller="dateController as ctrl" >
+  <div class="datepickerdemo" ng-controller="dateController as ctrl">
     <h1>Date picker</h1>
     <md-content>
       <h4>Standard Date Picker</h4>
@@ -364,6 +412,36 @@
       </form>
 
     </md-content>
+  </div>
+
+  <div id="dialogContainer" ng-controller="dialogController as ctrl" layout="column">
+    <h1>Dialogs</h1>
+    <div layout="row">
+      <md-content>
+        <h4>Standard Alert</h4>
+        <md-button class="md-primary md-raised" ng-click="showAlert($event)" flex="100" flex-gt-md="auto">
+          Alert
+        </md-button>
+
+        <h4>Confirm Dialog Box</h4>
+        <md-button class="md-primary md-raised" ng-click="showConfirm($event)" flex="100" flex-gt-md="auto">
+          Confirm
+        </md-button>
+
+        <h4>Custom Dialog Box</h4>
+        <md-button class="md-primary md-raised" ng-click="showCustom($event)" flex="100" flex-gt-md="auto">
+          Custom
+        </md-button>
+
+        <div ng-if="status">
+          <br/>
+          <b layout="row" layout-align="center center" class="md-padding">
+                  {{status}}
+               </b>
+        </div>
+
+      </md-content>
+    </div>
   </div>
 
 </body>
