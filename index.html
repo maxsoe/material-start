@@ -31,7 +31,55 @@
       .controller('sliderController', sliderController)
       .controller('tabController', tabController)
       .controller('tooltipController', tooltipController)
-      .controller('chipController', chipController);
+      .controller('chipController', chipController)
+      .controller('contactsChipController', contactsChipController);
+
+    function contactsChipController($scope) {
+      var self = this;
+      self.querySearch = querySearch;
+      self.allContacts = loadContacts();
+      self.contacts = [self.allContacts[0]];
+      self.filterSelected = true;
+
+      function querySearch(query) {
+        var results = query ?
+          self.allContacts.filter(createFilterFor(query)) : [];
+        return results;
+      }
+
+      function createFilterFor(query) {
+        var lowercaseQuery = angular.lowercase(query);
+        return function filterFn(contact) {
+          return (contact._lowername.indexOf(lowercaseQuery) != -1);;
+        };
+      }
+
+      function loadContacts() {
+        var contacts = [
+          'Roberto Karlos',
+          'Bob Crestor',
+          'Nigel Rick',
+          'Narayana Garner',
+          'Anita Gros',
+          'Megan Smith',
+          'Tsvetko Metzger',
+          'Hector Simek',
+          'James Roody'
+        ];
+
+        return contacts.map(function(c, index) {
+          var cParts = c.split(' ');
+          var contact = {
+            name: c,
+            email: cParts[0][0].toLowerCase() + '.' + cParts[1].toLowerCase() +
+              '@example.com',
+            image: 'http://lorempixel.com/50/50/people?' + index
+          };
+          contact._lowername = contact.name.toLowerCase();
+          return contact;
+        });
+      }
+    }
 
     function chipController($scope) {
       var self = this;
@@ -1068,7 +1116,7 @@
 
   </div>
 
-<h1>Chips</h1>
+  <h1>Chips</h1>
   <div ng-controller="chipController as ctrl" layout="column" ng-cloak>
     <md-chips ng-model="ctrl.fruitNames" readonly="ctrl.readonly">
     </md-chips>
@@ -1088,6 +1136,34 @@
 
     <br/>
     <md-checkbox ng-model="ctrl.readonly">Readonly</md-checkbox>
+  </div>
+
+<h1>Contacts chips</h1>
+  <div ng-controller="contactsChipController as ctrl" layout="column" ng-cloak>
+    <md-content class="md-padding autocomplete" layout="column">
+      <md-contact-chips ng-model="ctrl.contacts" md-contacts="ctrl.querySearch($query)" md-contact-name="name" md-contact-image="image" md-contact-email="email" md-require-match="true" md-highlight-flags="i" filter-selected="ctrl.filterSelected" placeholder="To">
+      </md-contact-chips>
+
+      <md-list class="fixedRows">
+        <md-subheader class="md-no-sticky">Contacts</md-subheader>
+        <md-list-item class="md-2-line contact-item" ng-repeat="(index, contact) in ctrl.allContacts" ng-if="ctrl.contacts.indexOf(contact) < 0">
+          <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+          <div class="md-list-item-text compact">
+            <h3>{{contact.name}}</h3>
+            <p>{{contact.email}}</p>
+          </div>
+        </md-list-item>
+
+        <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in ctrl.contacts">
+          <img ng-src="{{contact.image}}" class="md-avatar" alt="{{contact.name}}" />
+          <div class="md-list-item-text compact">
+            <h3>{{contact.name}}</h3>
+            <p>{{contact.email}}</p>
+          </div>
+        </md-list-item>
+
+      </md-list>
+    </md-content>
   </div>
 
 </body>
