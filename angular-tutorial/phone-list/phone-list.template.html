@@ -21,3 +21,5 @@ Search: <input ng-model="$ctrl.query" />
     <p>Age: {{phone.age}}</p>
   </li>
 </ul>
+
+<pre>{{$ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp | json}}</pre>
