@@ -14,12 +14,12 @@ Search: <input ng-model="$ctrl.query" />
 <p>Sorted by {{$ctrl.orderProp}}</p>
 
 
-<ul>
-  <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp">
-    <span>{{phone.name}}</span>
+<ul class="phones">
+  <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp" class="thumbnail">
+    <a href="#/phones/{{phone.id}}" class="thumb">
+      <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+    </a>
+    <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
     <p>{{phone.snippet}}</p>
-    <p>Age: {{phone.age}}</p>
   </li>
 </ul>
-
-<pre>{{$ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp | json}}</pre>
