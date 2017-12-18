@@ -2,6 +2,7 @@
 angular.module('myApp', [
   'ngMaterial',
   'ngRoute',
+  'core',
   'phoneList',
   'phoneDetail'
 ]);
