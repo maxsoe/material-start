@@ -1,5 +1,9 @@
 // Define the `myApp` module
 angular.module('myApp', [
   'ngMaterial',
-  'phoneList'
+  'ngRoute',
+  'ngAnimate',
+  'core',
+  'phoneList',
+  'phoneDetail'
 ]);
