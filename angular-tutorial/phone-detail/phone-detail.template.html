@@ -4,11 +4,17 @@
 
 <p>{{$ctrl.phone.description}}</p>
 
-<ul class="phone-thumbs">
+<!-- <ul class="phone-thumbs">
   <li ng-repeat="img in $ctrl.phone.images">
     <img ng-src="{{img}}" ng-click="$ctrl.setImage(img)" />
   </li>
-</ul>
+</ul> -->
+
+<div class="phone-images">
+  <img ng-src="{{img}}" class="phone"
+      ng-class="{selected: img === $ctrl.mainImageUrl}"
+      ng-repeat="img in $ctrl.phone.images" />
+</div>
 
 <ul class="specs">
   <li>
