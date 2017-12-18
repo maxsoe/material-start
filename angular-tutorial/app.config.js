@@ -1,6 +1,6 @@
-angular
-  .module('myApp')
-  .config(['$routeProvider',
+var myApp = angular.module('myApp');
+
+myApp.config(['$routeProvider',
     function config($routeProvider) {
 
       $routeProvider
