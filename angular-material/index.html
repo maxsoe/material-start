@@ -4,6 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+
+  <!-- Material Icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   <!-- Custom CSS for app -->
   <link rel="stylesheet" href="app.css" />
 </head>
@@ -13,13 +18,25 @@
   <md-toolbar>
     <h1>Toolbar</h1>
   </md-toolbar>
-
   <div class="container" layout="row" flex>
-    <md-sidenav md-is-locked-open="true" class="lightblue">
-      Sidenav
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+      <md-list>
+        <md-list-item>
+          <md-button>
+            <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>Thomas Burleson
+          </md-button>
+        </md-list-item>
+      </md-list>
+      <md-list-item>
+        <md-button>
+          <md-icon md-svg-src="svg/avatar-4.svg" class="avatar"></md-icon>Aaron Frost
+        </md-button>
+      </md-list-item>
     </md-sidenav>
-    <md-content id="content" class="lightgreen" flex>
-      Content
+    <md-content id="content" flex>
+      <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>Thomas Burleson
+      <h2>Thomas Burleson</h2>
+      <p>Lorum ipsum dolor sit amet</p>
     </md-content>
   </div>
 
