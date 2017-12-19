@@ -26,8 +26,17 @@
       <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>Thomas Burleson
       <h2>Thomas Burleson</h2>
       <p>Lorum ipsum dolor sit amet</p>
+
+      <div ng-app="helloworld">
+        <a ui-sref="hello" ui-sref-active="active">Hello</a>
+        <a ui-sref="about" ui-sref-active="active">About</a>
+
+        <ui-view></ui-view>
+      </div>
     </md-content>
   </div>
+
+
 
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
@@ -35,7 +44,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
+  <script src="js/angular-ui-router.min.js"></script>
 
+  <!-- UI router helloworld -->
+  <script src="helloworld/helloworld.js"></script>
+  
   <!-- Angular Material Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
