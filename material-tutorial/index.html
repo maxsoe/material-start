@@ -20,18 +20,18 @@
   </md-toolbar>
   <div class="container" layout="row" flex>
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-      <md-list>
-        <md-list-item>
-          <md-button>
-            <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>Thomas Burleson
-          </md-button>
+
+      <!-- <md-list ng-controller="UserListController">
+        <md-list-item ng-repeat="user in users">
+          <a href="{{user.link}}">
+            <md-icon ng-src="{{user.imageUrl}}" class="avatar"></md-icon>{{user.name}}
+          </a>
         </md-list-item>
-      </md-list>
-      <md-list-item>
-        <md-button>
-          <md-icon md-svg-src="svg/avatar-4.svg" class="avatar"></md-icon>Aaron Frost
-        </md-button>
-      </md-list-item>
+      </md-list> -->
+
+      <user-list></user-list>
+
+
     </md-sidenav>
     <md-content id="content" flex>
       <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>Thomas Burleson
@@ -52,6 +52,8 @@
   <!-- Application bootstrap  -->
   <!-- Your application bootstrap  -->
   <script src="app.module.js"></script>
+
+  <script src="user-list/user-list.component.js"></script>
 
 </body>
 

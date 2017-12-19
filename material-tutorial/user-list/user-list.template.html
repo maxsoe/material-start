@@ -1,0 +1,18 @@
+Search: <input ng-model="$ctrl.query" />
+
+<p>
+  Sort by:
+  <select ng-model="$ctrl.orderProp">
+    <option value="name">Alphabetical</option>
+    <option value="age">Newest</option>
+    <option value="-age">Oldest</option>
+  </select>
+</p>
+
+<md-list>
+  <md-list-item ng-repeat="user in $ctrl.users | filter:$ctrl.query | orderBy:$ctrl.orderProp">
+    <a href="{{user.link}}">
+      <md-icon ng-src="{{user.imageUrl}}" class="avatar"></md-icon>{{user.name}}
+    </a>
+  </md-list-item>
+</md-list>
