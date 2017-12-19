@@ -15,4 +15,6 @@ Search: <input ng-model="$ctrl.query" />
       <md-icon ng-src="{{user.imageUrl}}" class="avatar"></md-icon>{{user.name}}
     </a>
   </md-list-item>
+
+  <pre>{{$ctrl.users | filter:$ctrl.query | orderBy:$ctrl.orderProp | json}}</pre>
 </md-list>

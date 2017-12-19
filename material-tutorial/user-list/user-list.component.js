@@ -3,16 +3,14 @@ angular
   .module('userList')
   .component('userList', {
     templateUrl: 'user-list/user-list.template.html',
-    controller: function UserListController() {
-      this.users = [{
-        name: 'Nexus S',
-        snippet: 'Fast just got faster with Nexus S.'
-      }, {
-        name: 'Motorola XOOM™ with Wi-Fi',
-        snippet: 'The Next, Next Generation tablet.'
-      }, {
-        name: 'MOTOROLA XOOM™',
-        snippet: 'The Next, Next Generation tablet.'
-      }];
-    }
+    controller: ['$http',
+      function PhoneListController($http) {
+        var self = this;
+        self.orderProp = 'age';
+
+        $http.get('data/users/users.json').then(function(response) {
+          self.users = response.data;
+        });
+      }
+    ]
   });
