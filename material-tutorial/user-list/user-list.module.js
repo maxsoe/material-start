@@ -1,2 +1,2 @@
 // Define the `userList` module
-angular.module('userList', []);
+angular.module('userList', ['core.user']);

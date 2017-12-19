@@ -3,14 +3,10 @@ angular
   .module('userList')
   .component('userList', {
     templateUrl: 'user-list/user-list.template.html',
-    controller: ['$http',
-      function PhoneListController($http) {
-        var self = this;
-        self.orderProp = 'age';
-
-        $http.get('data/users/users.json').then(function(response) {
-          self.users = response.data;
-        });
+    controller: ['getUser',
+      function UserListController(User) {
+        this.users = User.query();
+        this.orderProp = 'age';
       }
     ]
   });

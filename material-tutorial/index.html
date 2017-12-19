@@ -34,6 +34,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-resource.min.js"></script>
 
   <!-- Angular Material Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
@@ -41,11 +42,14 @@
   <!-- Application bootstrap  -->
   <script src="app.module.js"></script>
 
-  <!-- Component: userList -->
   <!-- make sure to load module definitions before the components -->
+  <!-- Core services -->
+  <script src="core/user/user.module.js"></script>
+  <script src="core/user/user.service.js"></script>
+
+  <!-- Component: userList -->
   <script src="user-list/user-list.module.js"></script>
   <script src="user-list/user-list.component.js"></script>
-
 
 </body>
 
