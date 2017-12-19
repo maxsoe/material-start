@@ -1,6 +1,6 @@
-// Register `userList` component as a module of 'TutorialApp', along with its associated controller and template
+// Register `userList` component as a module of itself, along with its associated controller and template
 angular
-  .module('TutorialApp')
+  .module('userList')
   .component('userList', {
     templateUrl: 'user-list/user-list.template.html',
     controller: function UserListController() {

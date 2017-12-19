@@ -4,8 +4,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Angular Material style sheet -->
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+  <!-- Roboto font -->
   <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
-
   <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
@@ -20,18 +20,7 @@
   </md-toolbar>
   <div class="container" layout="row" flex>
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-
-      <!-- <md-list ng-controller="UserListController">
-        <md-list-item ng-repeat="user in users">
-          <a href="{{user.link}}">
-            <md-icon ng-src="{{user.imageUrl}}" class="avatar"></md-icon>{{user.name}}
-          </a>
-        </md-list-item>
-      </md-list> -->
-
       <user-list></user-list>
-
-
     </md-sidenav>
     <md-content id="content" flex>
       <md-icon md-svg-src="svg/avatar-1.svg" class="avatar"></md-icon>Thomas Burleson
@@ -50,10 +39,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 
   <!-- Application bootstrap  -->
-  <!-- Your application bootstrap  -->
   <script src="app.module.js"></script>
 
+  <!-- Component: userList -->
+  <!-- make sure to load module definitions before the components -->
+  <script src="user-list/user-list.module.js"></script>
   <script src="user-list/user-list.component.js"></script>
+
 
 </body>
 
