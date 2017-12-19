@@ -1,5 +1,5 @@
 angular
-  .module('core.user')
+  .module('core.user', ['ngResource'])
   .factory('getUser', ['$resource',
     function($resource) {
       return $resource('data/users/:userId.json', {}, {

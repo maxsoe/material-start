@@ -1,10 +1,10 @@
-var myApp = angular.module('helloworld', ['ui.router']);
+var myApp = angular.module('helloworld', ['ui.router', 'userList']);
 
 myApp.config(function($stateProvider) {
   var helloState = {
     name: 'hello',
     url: '/hello',
-    templateURL: 'user-list/user-list.template.html'
+    templateUrl: 'user-list/user-list.template.html'
   }
 
   var aboutState = {

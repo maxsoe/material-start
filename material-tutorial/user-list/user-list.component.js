@@ -1,6 +1,6 @@
 // Register `userList` component as a module of itself, along with its associated controller and template
 angular
-  .module('userList')
+  .module('userList', ['core.user'])
   .component('userList', {
     templateUrl: 'user-list/user-list.template.html',
     controller: ['getUser',
