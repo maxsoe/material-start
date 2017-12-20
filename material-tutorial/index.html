@@ -16,9 +16,12 @@
 <body ng-app="TutorialApp" ng-cloak layout="column">
 
   <md-toolbar>
-    <h1>Toolbar</h1>
-  </md-toolbar>
-  <div class="container" layout="row" flex>
+        <div class="md-toolbar-tools">
+          <h1 flex md-truncate>Toolbar with Disabled/Enabled Icon Buttons</h1>
+        </div>
+      </md-toolbar>
+
+  <div class="" layout="row" flex>
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
       <user-list></user-list>
     </md-sidenav>
