@@ -2,6 +2,5 @@
 
 var TutorialApp = angular.module('TutorialApp', [
   'ngMaterial',
-  'userList',
-  'helloworld'
+  'userList'
 ]);
