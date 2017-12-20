@@ -14,15 +14,15 @@ angular
     var helloState = {
       name: 'hello',
       url: '/hello',
-      templateUrl: 'user-list/user-list.template.html'
-    }
-
-    var detailState = {
-      name: 'details',
-      url: '/details',
       template: '<h3>Its the UI-Router hello world app!</h3>'
     }
 
+    // var detailState = {
+    //   name: 'details',
+    //   url: '/details',
+    //   templateUrl: 'user-detail/user-detail.template.html'
+    // }
+
     $stateProvider.state(helloState);
-    $stateProvider.state(detailState);
+    // $stateProvider.state(detailState);
   });
