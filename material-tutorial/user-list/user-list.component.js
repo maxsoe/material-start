@@ -17,12 +17,12 @@ angular
       templateUrl: 'user-list/user-list.template.html'
     }
 
-    var aboutState = {
-      name: 'about',
-      url: '/about',
+    var detailState = {
+      name: 'details',
+      url: '/details',
       template: '<h3>Its the UI-Router hello world app!</h3>'
     }
 
     $stateProvider.state(helloState);
-    $stateProvider.state(aboutState);
+    $stateProvider.state(detailState);
   });
