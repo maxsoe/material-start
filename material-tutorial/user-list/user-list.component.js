@@ -14,7 +14,8 @@ angular
     var helloState = {
       name: 'hello',
       url: '/hello',
-      template: '<h3>Its the UI-Router hello world app!</h3>'
+      // template: '<h3>Its the UI-Router hello world app!</h3>'
+      component: 'userList'
     }
 
     // var detailState = {
